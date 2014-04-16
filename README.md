@@ -20,6 +20,7 @@ Usage
 -----
 
 ``` php
-$distance = new Distance(new GoogleMapProvider(new CurlHttpAdapter, 'fr-FR', GoogleMapProvider::MODE_BICYCLING));
+$distance = new Distance(
+	new GoogleMapProvider(new CurlHttpAdapter, 'fr-FR', GoogleMapProvider::MODE_BICYCLING));
 $result = $distance->distance(array('montpellier'), array('paris', 'perpignan', 'lyon'));
 ```
