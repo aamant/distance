@@ -57,8 +57,12 @@ class GoogleMapProvider implements ProviderInterface
 		$raw = $this->getAdapter()->getContent($query);
 		$content = json_decode($raw);
 
-		if ($content->status == 'OK'){
-			return $content->rows;
+		switch ($content->status) {
+			case 'OK':
+				return $content->rows;
+				break;
+			case 'OVER_QUERY_LIMIT':
+				throw new QueryLimitException($content->error_message, 10);
 		}
 
 		return false;
